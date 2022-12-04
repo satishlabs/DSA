@@ -3,23 +3,16 @@ package com.satishlabs.bitwise;
 //Add two numbers without + operator
 public class Lab15 {
 	public static void main(String[] args) {
-		int n = 14;
-		int count = 0;
-		int rev=0;
-		while (n > 0) {
-			rev = rev<<1;
-			
-			if((n & 1)==1)
-			{
-				rev =rev^1;
-			}
-			n = n>>1;
-			count++;
+		int a = 71;
+		int b = 51;
+		
+		while(b > 0) {
+			int temp = (a&b) <<1;
+			a = a^b;
+			b = temp;
 		}
-
-		System.out.println(rev);
-		System.out.println("Loop repeated times " + count);
+		System.out.println(a);
 	}
 }
 
-//Time =>o(1)
+//Time Complexity => O(1)
