@@ -1,9 +1,5 @@
 package com.satishlabs.hashing3;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 //Implement HashSet using Double Hashing
 
 class MyHashSet {
@@ -36,7 +32,7 @@ class MyHashSet {
 	public void add(Integer key) {
 		int index = myHash1(key);
 		if (mytable[index] != null) {
-			index = myHash(key);
+			index = myHash(key,"add");
 		}
 		mytable[index] = key;
 		this.currentSize++;
@@ -45,7 +41,7 @@ class MyHashSet {
 	public void remove(Integer key) {
 		int index = myHash1(key);
 		if (mytable[index] != key) {
-			index = myHash(key);
+			index = myHash(key,"remove");
 		}
 		if (mytable[index] == key) {
 			mytable[index] = null;
@@ -56,7 +52,7 @@ class MyHashSet {
 	public boolean contains(Integer key) {
 		int index = myHash1(key);
 		if (mytable[index] != key) {
-			index = myHash(key);
+			index = myHash(key,"search");
 		}
 
 		return mytable[index] == key;
@@ -72,15 +68,22 @@ class MyHashSet {
 		return hash2;
 	}
 
-	public int myHash(Integer key) {
+	public int myHash(Integer key,String ops) {
 		int hash1 = myHash1(key);
 		int hash2 = myHash2(key);
 		int myhash = 0;
 		for (int i = 0; i < this.bukcetSize; i++) {
 			myhash = (hash1 + i * hash2) % this.bukcetSize;
-			if (mytable[myhash] == key) {
-				return myhash;
+			if(ops.equals("add")) {
+				if (mytable[myhash] == null) {
+					return myhash;
+				}
+			}else {
+				if(mytable[myhash] == key) {
+					return myhash;
+				}
 			}
+			
 		}
 		return myhash;
 	}
