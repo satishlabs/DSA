@@ -1,4 +1,4 @@
-package com.satishlabs.hashing3;
+package com.satishlabs.hashing5;
 
 //Implement HashSet using Double Hashing
 
