@@ -1,8 +1,5 @@
 package com.satishlabs.array;
 
-import java.util.ArrayList;
-
-import java.util.List;
 //Search for given Element in the Unsorted Array 
 
 public class Lab4 {
